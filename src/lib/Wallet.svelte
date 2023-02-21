@@ -12,6 +12,7 @@
   let _btc = ''
   let _eth = ''
   let _cosmos = ''
+  let _evmos = ''
   let _message = ''
 
   async function generate(){
@@ -21,7 +22,7 @@
   async function derive(){
     const derived = await Wallet.derive(mnemonic, path, hrp)
     if (derived.success) {
-      let [keypair, btc, eth, cosmos] = derived.result
+      let [keypair, btc, eth, cosmos, evmos] = derived.result
       _private = keypair['private']
       _public = keypair['public']
       ext_private = keypair['ext_private']
@@ -29,6 +30,7 @@
       _btc = btc
       _eth = eth
       _cosmos = cosmos
+      _evmos = evmos
       _message = ''
     } else {
       _message = derived.message
@@ -39,6 +41,7 @@
       _btc = ''
       _eth = ''
       _cosmos = ''
+      _evmos = ''
     }
   }
 </script>
@@ -62,6 +65,7 @@
   <p>{_btc}</p>
   <p>{_eth}</p>
   <p>{_cosmos}</p>
+  <p>{_evmos}</p>
 </div>
 
 <style>
